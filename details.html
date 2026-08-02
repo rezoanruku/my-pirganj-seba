@@ -2,7 +2,8 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <title>বিস্তারিত সেবা - আমার পীরগঞ্জ</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -40,26 +41,25 @@
             </div>
         </main>
 
-        <!-- Bottom Navigation Bar -->
-        <nav class="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-2.5 flex justify-around text-xs text-gray-600 z-40 shadow-lg">
-            <a href="index.html" class="flex flex-col items-center hover:text-emerald-600 text-gray-500">
-                <i class="fa-solid fa-house text-lg"></i>
-                <span class="text-[10px] font-semibold mt-0.5">হোম</span>
-            </a>
-<a href="index.html#service-section" class="flex flex-col items-center text-emerald-600 font-semibold">
-                <i class="fa-solid fa-layer-group text-lg"></i>
-                <span class="text-[10px] font-bold mt-0.5">সেবাসমূহ</span>
-            </a>
-            <a href="news.html" class="flex flex-col items-center hover:text-emerald-600 text-gray-500">
-                <i class="fa-regular fa-newspaper text-lg"></i>
-                <span class="text-[10px] font-semibold mt-0.5">খবর</span>
-            </a>
-            <a href="profile.html" class="flex flex-col items-center hover:text-emerald-600 text-gray-500">
-                <i class="fa-regular fa-user text-lg"></i>
-                <span class="text-[10px] font-semibold mt-0.5">প্রোফাইল</span>
-            </a>
-        </nav>
-
+<!-- বটম নেভিগেশন বার -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-4 pt-2.5 pb-4 flex justify-between items-center shadow-lg z-40">
+    <a href="index.html" class="flex flex-col items-center text-green-600">
+        <i class="fa-solid fa-house text-lg"></i>
+        <span class="text-[10px] font-bold mt-0.5">হোম</span>
+    </a>
+    <a href="#service-section" class="flex flex-col items-center text-gray-400 hover:text-green-600 transition-colors">
+        <i class="fa-solid fa-layer-group text-lg"></i>
+        <span class="text-[10px] font-semibold mt-0.5">সেবাসমূহ</span>
+    </a>
+    <a href="news.html" class="flex flex-col items-center text-gray-400 hover:text-green-600 transition-colors">
+        <i class="fa-regular fa-newspaper text-lg"></i>
+        <span class="text-[10px] font-semibold mt-0.5">খবর</span>
+    </a>
+    <a href="profile.html" class="flex flex-col items-center text-gray-400 hover:text-green-600 transition-colors">
+        <i class="fa-regular fa-user text-lg"></i>
+        <span class="text-[10px] font-semibold mt-0.5">প্রোফাইল</span>
+    </a>
+</nav>
     </div>
 
     <!-- JS Link -->
