@@ -2,16 +2,15 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>পীরগঞ্জ ম্যাপ - আমার পীরগঞ্জ</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
   <!-- Manifest File Link -->
-<link rel="manifest" href="manifest.json">
-<!-- Theme Color for Mobile Browsers -->
-<meta name="theme-color" opacity="1" content="#059669">
-
+  <link rel="manifest" href="manifest.json">
+  <!-- Theme Color for Mobile Browsers -->
+  <meta name="theme-color" content="#059669">
 </head>
 <body class="flex justify-center min-h-screen bg-gray-100 font-['Hind_Siliguri']">
 
@@ -19,8 +18,8 @@
     <div class="w-full max-w-[425px] bg-white shadow-2xl relative flex flex-col min-h-screen overflow-hidden">
         
         <!-- হেডার -->
-        <header class="bg-white border-b border-gray-100 px-4 py-3 flex items-center justify-between sticky top-0 z-50 shadow-sm">
-            <div class="flex items-center gap-3">
+<header class="bg-white border-b border-gray-100 px-4 py-3 flex items-center justify-between sticky top-0 z-50 shadow-sm pt-[max(0.75rem,env(safe-area-inset-top))]">
+   <div class="flex items-center gap-3">
                 <a href="index.html" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-emerald-100 hover:text-emerald-600 transition-all active:scale-95">
                     <i class="fa-solid fa-arrow-left"></i>
                 </a>
@@ -44,14 +43,17 @@
                 >
             </div>
 
-            <!-- ২. গুগল ম্যাপস এম্বেড -->
+            <!-- ২. আপনার দেওয়া পদ্ধতিতে গুগল ম্যাপস এম্বেড -->
             <div id="google-map-container" class="w-full h-[70vh] hidden">
-                <iframe 
-                    class="w-full h-full border-0 rounded-xl shadow-sm"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115132.84643194013!2d89.24823549247693!3d25.418043644053745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fcd42d59ca190b%3A0xc33a1e0b503460a8!2sPirganj%20Upazila!5e0!3m2!1sen!2sbd!4v1710000000000!5m2!1sen!2sbd" 
-                    allowfullscreen="" 
-                    loading="lazy">
-                </iframe>
+                <iframe
+  src="https://www.google.com/maps?q=Pirganj+Upazila&output=embed"
+  width="600"
+  height="450"
+  style="border:0;"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade">
+</iframe>
             </div>
 
             <!-- লাইভ জিপিএস বাটন বার -->
