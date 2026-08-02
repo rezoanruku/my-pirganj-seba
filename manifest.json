@@ -1,0 +1,21 @@
+{
+  "short_name": "পীরগঞ্জ সেবা",
+  "name": "আমার পীরগঞ্জ - ডিজিটাল সেবা ডিরেক্টরি",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#ffffff",
+  "theme_color": "#059669",
+  "display": "standalone",
+  "orientation": "portrait"
+}

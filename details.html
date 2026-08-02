@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>বিস্তারিত সেবা - আমার পীরগঞ্জ</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Manifest File Link -->
+<link rel="manifest" href="manifest.json">
+<!-- Theme Color for Mobile Browsers -->
+<meta name="theme-color" opacity="1" content="#059669">
+
+</head>
+<body class="flex justify-center min-h-screen bg-[#f0f2f5] font-['Hind_Siliguri']">
+
+    <!-- মেইন মোবাইল ফ্রেম -->
+    <div class="w-full max-w-[425px] bg-white shadow-2xl relative flex flex-col h-screen overflow-hidden">
+
+        <!-- Header Section -->
+        <header class="bg-emerald-600 text-white p-4 flex items-center shadow-md sticky top-0 z-50 flex-shrink-0">
+            <a href="index.html" class="text-xl mr-4 hover:text-gray-200 transition-colors">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+            <h1 id="page-title" class="text-lg font-bold">বিস্তারিত তথ্য</h1>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto pb-20 p-4 bg-slate-50/50">
+            <!-- Data Cards Container -->
+            <div id="details-container" class="space-y-3">
+                <p class="text-center text-gray-500 py-10">তথ্য লোড হচ্ছে...</p>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation Bar -->
+        <nav class="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-2.5 flex justify-around text-xs text-gray-600 z-40 shadow-lg">
+            <a href="index.html" class="flex flex-col items-center hover:text-emerald-600 text-gray-500">
+                <i class="fa-solid fa-house text-lg"></i>
+                <span class="text-[10px] font-semibold mt-0.5">হোম</span>
+            </a>
+<a href="index.html#service-section" class="flex flex-col items-center text-emerald-600 font-semibold">
+                <i class="fa-solid fa-layer-group text-lg"></i>
+                <span class="text-[10px] font-bold mt-0.5">সেবাসমূহ</span>
+            </a>
+            <a href="news.html" class="flex flex-col items-center hover:text-emerald-600 text-gray-500">
+                <i class="fa-regular fa-newspaper text-lg"></i>
+                <span class="text-[10px] font-semibold mt-0.5">খবর</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center hover:text-emerald-600 text-gray-500">
+                <i class="fa-regular fa-user text-lg"></i>
+                <span class="text-[10px] font-semibold mt-0.5">প্রোফাইল</span>
+            </a>
+        </nav>
+
+    </div>
+
+    <!-- JS Link -->
+    <script type="module" src="details.js"></script>
+</body>
+</html>

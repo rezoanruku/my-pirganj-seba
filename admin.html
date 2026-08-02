@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>এডমিন ড্যাশবোর্ড - পীরগঞ্জ সেবা</title>
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body { font-family: 'Hind Siliguri', sans-serif; }
+  </style>
+  
+  <!-- Manifest File Link -->
+<link rel="manifest" href="manifest.json">
+<!-- Theme Color for Mobile Browsers -->
+<meta name="theme-color" opacity="1" content="#059669">
+
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen pb-10">
+
+  <!-- হেডার -->
+  <header class="bg-emerald-600 text-white p-4 shadow-md sticky top-0 z-50">
+    <div class="max-w-xl mx-auto flex justify-between items-center">
+      <h1 class="text-lg font-bold flex items-center gap-2">
+        <i class="fa-solid fa-user-shield text-xl"></i> এডমিন কন্ট্রোল প্যানেল
+      </h1>
+      <span class="text-xs bg-emerald-700 px-2.5 py-1 rounded-full font-medium">লাইভ অ্যাডমিন</span>
+    </div>
+  </header>
+
+  <main class="max-w-xl mx-auto p-4 space-y-5">
+
+    <!-- ১. স্ট্যাটাস কাউন্টার কার্ড -->
+    <div class="grid grid-cols-2 gap-3">
+      <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-3">
+        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-xl">
+          <i class="fa-solid fa-users"></i>
+        </div>
+        <div>
+          <p class="text-xs text-slate-500 font-medium">মোট সাইনআপ</p>
+          <h3 id="total-users" class="text-xl font-bold text-slate-800">0</h3>
+        </div>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-3">
+        <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl">
+          <i class="fa-solid fa-database"></i>
+        </div>
+        <div>
+          <p class="text-xs text-slate-500 font-medium">মোট সেবা ডাটা</p>
+          <h3 id="total-services" class="text-xl font-bold text-slate-800">0</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- ২. তথ্য যুক্ত / মডিফাই করার ফর্ম -->
+    <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm">
+      <div class="flex justify-between items-center border-b border-slate-100 pb-3 mb-4">
+        <h2 id="form-title" class="font-bold text-slate-800 flex items-center gap-2">
+          <i class="fa-solid fa-plus-circle text-emerald-600"></i> নতুন তথ্য যুক্ত করুন
+        </h2>
+        <button id="cancel-edit-btn" type="button" class="hidden text-xs text-rose-500 hover:underline font-semibold">
+          বাতিল করুন
+        </button>
+      </div>
+
+      <form id="service-form" class="space-y-3.5">
+        <input type="hidden" id="doc-id">
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">ক্যাটাগরি নির্বাচন করুন</label>
+          <select id="category" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition">
+            
+            <optgroup label="🚌 পরিবহন ও যাতায়াত">
+              <option value="bus">বাস</option>
+              <option value="car_rent">গাড়ি ভাড়া</option>
+              <option value="courier">কুরিয়ার</option>
+            </optgroup>
+
+            <optgroup label="🏥 স্বাস্থ্য ও চিকিৎসাকেন্দ্র">
+              <option value="hospital">হাসপাতাল</option>
+              <option value="doctor">ডাক্তার</option>
+              <option value="ambulance">এ্যাম্বুলেন্স</option>
+              <option value="blood">রক্তদান</option>
+            </optgroup>
+
+            <optgroup label="🎓 শিক্ষা ও ক্যারিয়ার">
+              <option value="school">শিক্ষা প্রতিষ্ঠান</option>
+              <option value="tutor">টিউটর ও কোচিং</option>
+              <option value="jobs">চাকরির খবর</option>
+            </optgroup>
+
+            <optgroup label="🏛️ সরকারি ও প্রশাসনিক তথ্য">
+              <option value="union">ইউনিয়ন / পৌরসভা</option>
+              <option value="upazila">উপজেলা প্রশাসন</option>
+              <option value="land">ভূমি ও রেজিস্ট্রি</option>
+              <option value="digital_center">ডিজিটাল সেবা</option>
+            </optgroup>
+
+            <optgroup label="🛡️ জরুরী সেবা">
+              <option value="police">পুলিশ</option>
+              <option value="fire_service">ফায়ার সার্ভিস</option>
+              <option value="electricity">বিদ্যুৎ সেবা</option>
+              <option value="internet">ইন্টারনেট সেবা</option>
+            </optgroup>
+
+            <optgroup label="🌲 দর্শনীয় স্থান ও বিনোদন">
+              <option value="tourist_place">দর্শনীয় স্থান</option>
+              <option value="park">পার্ক</option>
+            </optgroup>
+
+            <optgroup label="🌾 কৃষি ও প্রাণীসম্পদ">
+              <option value="krishi">কৃষি সেবা</option>
+              <option value="vet_doctor">পশু চিকিৎসক</option>
+              <option value="agri_product">কৃষি-পণ্য</option>
+            </optgroup>
+
+            <optgroup label="🏪 ব্যবসায়িক ও সার্ভিস ডিরেক্টরি">
+              <option value="shop">দোকানপাট</option>
+              <option value="technician">দক্ষ কারিগর</option>
+              <option value="restaurant">রেস্তোরাঁ</option>
+            </optgroup>
+
+            <optgroup label="⚖️ আইনি ও সমাজসেবা">
+              <option value="lawyer">আইনজীবী</option>
+              <option value="kazi">কাজী অফিস</option>
+              <option value="volunteer">স্বেচ্ছাসেবক</option>
+            </optgroup>
+
+            <optgroup label="📰 খবর ও ইভেন্ট সংবাদ">
+              <option value="events">ইভেন্ট নোটিশ</option>
+            </optgroup>
+
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">সেবার নাম / শিরোনাম</label>
+          <input type="text" id="title" placeholder="যেমন: হানিফ কাউন্টার বা ডা. রফিক" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition" required>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">যোগাযোগ / ফোন নম্বর</label>
+          <input type="text" id="phone" placeholder="017xxxxxxxx" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition" required>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">ঠিকানা / লোকেশন (ঐচ্ছিক)</label>
+          <input type="text" id="address" placeholder="যেমন: বাসস্ট্যান্ড, পীরগঞ্জ" class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-600 mb-1">বিস্তারিত তথ্য (ঐচ্ছিক)</label>
+          <textarea id="description" rows="2" placeholder="সময়সূচী, চেম্বারের ঠিকানা ইত্যাদি..." class="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-xl text-sm focus:outline-none focus:border-emerald-500 transition"></textarea>
+        </div>
+
+        <button type="submit" id="submit-btn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-semibold shadow-md shadow-emerald-200 transition">
+          সেভ করুন
+        </button>
+      </form>
+    </div>
+
+    <!-- ৩. ডাটা লিস্ট সেকশন -->
+    <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm space-y-4">
+      <div class="flex justify-between items-center border-b border-slate-100 pb-3">
+        <h2 class="font-bold text-slate-800 flex items-center gap-2">
+          <i class="fa-solid fa-list-check text-emerald-600"></i> ডাটা তালিকা
+        </h2>
+      </div>
+
+      <!-- ফিল্টার / সার্চ বার -->
+      <div class="relative">
+        <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-xs"></i>
+        <input type="text" id="search-input" placeholder="নাম বা ফোন নম্বর দিয়ে খুঁজুন..." class="w-full bg-slate-50 border border-slate-200 pl-8 pr-3 py-2 rounded-xl text-xs focus:outline-none focus:border-emerald-500">
+      </div>
+
+      <!-- ডাটা লিস্ট কনটেইনার -->
+      <div id="data-list" class="space-y-3">
+        <p class="text-center text-xs text-slate-400 py-4">তথ্য লোড করা হচ্ছে...</p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Firebase Script Setup -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getFirestore, collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDpTzM5ABQ_vGT_6_FNCX0CNanUehzU6Fs",
+      authDomain: "my-pirganj-app.firebaseapp.com",
+      projectId: "my-pirganj-app",
+      storageBucket: "my-pirganj-app.firebasestorage.app",
+      messagingSenderId: "892652647821",
+      appId: "1:892652647821:web:10b7790e59b54ae194b9c4",
+      measurementId: "G-5CHVY24TMB"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const ADMIN_EMAIL = "rezoanhoseenruku@gmail.com";
+
+    // অ্যাডমিন অথেনটিকেশন গার্ড
+    onAuthStateChanged(auth, (user) => {
+      if (!user || user.email !== ADMIN_EMAIL) {
+        alert("আপনার এই পেজে প্রবেশের অনুমতি নেই!");
+        window.location.href = "index.html";
+      }
+    });
+
+    let allServices = [];
+
+    // ১. মোট সাইনআপ কাউন্ট লাইভ আপডেট
+    onSnapshot(collection(db, "users"), (snapshot) => {
+      document.getElementById('total-users').innerText = snapshot.size;
+    });
+
+    // ২. সার্ভিস ডাটা লাইভ লোড করা (Safe Query without Crash)
+    const servicesRef = collection(db, "services");
+
+    onSnapshot(servicesRef, (snapshot) => {
+      document.getElementById('total-services').innerText = snapshot.size;
+      allServices = [];
+
+      snapshot.forEach((docSnap) => {
+        allServices.push({ id: docSnap.id, ...docSnap.data() });
+      });
+
+      // নতুন ডাটা আগে দেখানোর জন্য
+      allServices.reverse();
+
+      renderDataList(allServices);
+    });
+
+    // ৩. ডাটা লিস্ট দেখানোর ফাংশন
+    function renderDataList(dataArray) {
+      const listContainer = document.getElementById('data-list');
+
+      if (dataArray.length === 0) {
+        listContainer.innerHTML = `<p class="text-center text-xs text-slate-400 py-4">কোনো তথ্য পাওয়া যায়নি।</p>`;
+        return;
+      }
+
+      let html = '';
+      dataArray.forEach((item) => {
+        html += `
+          <div class="p-3.5 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-slate-50 transition flex justify-between items-start gap-3">
+            <div class="space-y-1">
+              <span class="text-[10px] bg-emerald-100 text-emerald-700 font-semibold px-2 py-0.5 rounded-full uppercase">${item.category}</span>
+              <h4 class="font-bold text-sm text-slate-800">${item.title}</h4>
+              <p class="text-xs text-slate-500 font-medium"><i class="fa-solid fa-phone text-[10px]"></i> ${item.phone}</p>
+              ${item.address ? `<p class="text-[11px] text-slate-500"><i class="fa-solid fa-location-dot text-[10px]"></i> ${item.address}</p>` : ''}
+              ${item.description ? `<p class="text-[11px] text-slate-400 line-clamp-1">${item.description}</p>` : ''}
+            </div>
+
+            <div class="flex items-center gap-1">
+              <button onclick="editService('${item.id}')" class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-100 flex items-center justify-center transition" title="Modify/Edit">
+                <i class="fa-solid fa-pen-to-square text-xs"></i>
+              </button>
+              <button onclick="deleteService('${item.id}')" class="w-8 h-8 rounded-lg bg-rose-50 text-rose-600 hover:bg-rose-100 flex items-center justify-center transition" title="Delete">
+                <i class="fa-solid fa-trash-can text-xs"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      });
+
+      listContainer.innerHTML = html;
+    }
+
+    // ৪. নতুন তথ্য যোগ অথবা মডিফাই করা
+    document.getElementById('service-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const docId = document.getElementById('doc-id').value;
+      const category = document.getElementById('category').value;
+      const title = document.getElementById('title').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const description = document.getElementById('description').value.trim();
+
+      try {
+        if (docId) {
+          await updateDoc(doc(db, "services", docId), {
+            category, title, phone, address, description
+          });
+          alert("সফলভাবে তথ্য পরিবর্তন করা হয়েছে!");
+        } else {
+          await addDoc(collection(db, "services"), {
+            category, title, phone, address, description, createdAt: new Date()
+          });
+          alert("নতুন তথ্য যুক্ত করা হয়েছে!");
+        }
+        resetForm();
+      } catch (error) {
+        alert("সমস্যা হয়েছে: " + error.message);
+      }
+    });
+
+    // ৫. এডিট বাটন (Window Scope)
+    window.editService = (id) => {
+      const item = allServices.find(s => s.id === id);
+      if (!item) return;
+
+      document.getElementById('doc-id').value = item.id;
+      document.getElementById('category').value = item.category;
+      document.getElementById('title').value = item.title;
+      document.getElementById('phone').value = item.phone;
+      document.getElementById('address').value = item.address || '';
+      document.getElementById('description').value = item.description || '';
+
+      document.getElementById('form-title').innerHTML = `<i class="fa-solid fa-pen-to-square text-blue-600"></i> তথ্য সংশোধন করুন`;
+      document.getElementById('submit-btn').innerText = "আপডেট করুন";
+      document.getElementById('submit-btn').className = "w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl font-semibold shadow-md shadow-blue-200 transition";
+      document.getElementById('cancel-edit-btn').classList.remove('hidden');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // ৬. ফর্ম রিসেট ফাংশন
+    const resetForm = () => {
+      document.getElementById('service-form').reset();
+      document.getElementById('doc-id').value = '';
+      document.getElementById('form-title').innerHTML = `<i class="fa-solid fa-plus-circle text-emerald-600"></i> নতুন তথ্য যুক্ত করুন`;
+      document.getElementById('submit-btn').innerText = "সেভ করুন";
+      document.getElementById('submit-btn').className = "w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded-xl font-semibold shadow-md shadow-emerald-200 transition";
+      document.getElementById('cancel-edit-btn').classList.add('hidden');
+    };
+    
+    window.resetForm = resetForm;
+    document.getElementById('cancel-edit-btn').addEventListener('click', resetForm);
+
+    // ৭. ডিলিট বাটন (Window Scope)
+    window.deleteService = async (id) => {
+      if (confirm("আপনি কি নিশ্চিত এটি ডিলিট করতে চান?")) {
+        try {
+          await deleteDoc(doc(db, "services", id));
+        } catch (error) {
+          alert("ডিলিট করতে সমস্যা হয়েছে: " + error.message);
+        }
+      }
+    };
+
+    // ৮. ফিল্টার/সার্চ লিসেনার
+    const filterData = () => {
+      const text = document.getElementById('search-input').value.toLowerCase();
+      const filtered = allServices.filter(item => 
+        (item.title && item.title.toLowerCase().includes(text)) || 
+        (item.phone && item.phone.includes(text))
+      );
+      renderDataList(filtered);
+    };
+
+    document.getElementById('search-input').addEventListener('input', filterData);
+  </script>
+</body>
+</html>

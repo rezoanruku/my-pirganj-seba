@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>পীরগঞ্জ ম্যাপ - আমার পীরগঞ্জ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Manifest File Link -->
+<link rel="manifest" href="manifest.json">
+<!-- Theme Color for Mobile Browsers -->
+<meta name="theme-color" opacity="1" content="#059669">
+
+</head>
+<body class="flex justify-center min-h-screen bg-gray-100 font-['Hind_Siliguri']">
+
+    <!-- মেইন মোবাইল ফ্রেম -->
+    <div class="w-full max-w-[425px] bg-white shadow-2xl relative flex flex-col min-h-screen overflow-hidden">
+        
+        <!-- হেডার -->
+        <header class="bg-white border-b border-gray-100 px-4 py-3 flex items-center justify-between sticky top-0 z-50 shadow-sm">
+            <div class="flex items-center gap-3">
+                <a href="index.html" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-emerald-100 hover:text-emerald-600 transition-all active:scale-95">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <h1 class="text-base font-bold text-gray-800" id="map-title">পীরগঞ্জ উপজেলার ম্যাপ</h1>
+            </div>
+            
+            <button id="reset-map-btn" onclick="showStaticImage()" class="hidden text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-1 rounded-lg font-semibold">
+                <i class="fa-solid fa-image mr-1"></i> ছবি ম্যাপ
+            </button>
+        </header>
+
+        <!-- ম্যাপ এরিয়া (প্যাডিং দিয়ে বাটনের জায়গা রাখা হয়েছে) -->
+        <main class="flex-1 relative bg-white flex items-center justify-center p-2 pb-24 min-h-[500px]">
+            
+            <!-- ১. পীরগঞ্জ ম্যাপ ছবি (ডিরেক্ট লিংক সহ) -->
+            <div id="image-map-container" class="w-full h-full flex items-center justify-center">
+                <img 
+                    src="https://i.postimg.cc/RF7S4QLz/1785667252492.png" 
+                    alt="পীরগঞ্জ উপজেলার ম্যাপ" 
+                    class="w-full h-auto max-h-[70vh] object-contain block mx-auto rounded-lg shadow-sm"
+                >
+            </div>
+
+            <!-- ২. গুগল ম্যাপস এম্বেড -->
+            <div id="google-map-container" class="w-full h-[70vh] hidden">
+                <iframe 
+                    class="w-full h-full border-0 rounded-xl shadow-sm"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115132.84643194013!2d89.24823549247693!3d25.418043644053745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fcd42d59ca190b%3A0xc33a1e0b503460a8!2sPirganj%20Upazila!5e0!3m2!1sen!2sbd!4v1710000000000!5m2!1sen!2sbd" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+
+            <!-- লাইভ জিপিএস বাটন বার -->
+            <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-gray-100 flex justify-between items-center z-20">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-lg">
+                        <i class="fa-solid fa-location-crosshairs"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs font-bold text-gray-800">পীরগঞ্জে লাইভ অবস্থান</p>
+                        <p class="text-[10px] text-gray-500">গুগল ম্যাপে লোকেশন ট্র্যাক করতে</p>
+                    </div>
+                </div>
+                
+                <button 
+                    id="live-btn"
+                    onclick="showGoogleMap()" 
+                    class="px-3.5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-md transition-all active:scale-95 flex items-center gap-1.5">
+                    <i class="fa-solid fa-street-view"></i>
+                    <span>লাইভ ম্যাপ</span>
+                </button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- JavaScript লজিক -->
+    <script>
+        const imageContainer = document.getElementById('image-map-container');
+        const googleContainer = document.getElementById('google-map-container');
+        const resetBtn = document.getElementById('reset-map-btn');
+        const mapTitle = document.getElementById('map-title');
+
+        function showGoogleMap() {
+            imageContainer.classList.add('hidden');
+            googleContainer.classList.remove('hidden');
+            resetBtn.classList.remove('hidden');
+            mapTitle.innerText = "পীরগঞ্জ লাইভ গুগল ম্যাপ";
+        }
+
+        function showStaticImage() {
+            googleContainer.classList.add('hidden');
+            imageContainer.classList.remove('hidden');
+            resetBtn.classList.add('hidden');
+            mapTitle.innerText = "পীরগঞ্জ উপজেলার ম্যাপ";
+        }
+    </script>
+</body>
+</html>

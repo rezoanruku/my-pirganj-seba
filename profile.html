@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>প্রোফাইল - পীরগঞ্জ সেবা</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts (Hind Siliguri) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Manifest File Link -->
+<link rel="manifest" href="manifest.json">
+<!-- Theme Color for Mobile Browsers -->
+<meta name="theme-color" opacity="1" content="#059669">
+
+</head>
+<body class="flex justify-center min-h-screen bg-[#f0f2f5]">
+
+    <!-- মেইন মোবাইল ফ্রেম -->
+    <div class="w-full max-w-[425px] bg-white shadow-2xl relative flex flex-col h-screen overflow-hidden">
+        
+        <!-- হেডার (টপ বার) -->
+        <header class="bg-white border-b border-gray-100 px-4 py-3 flex justify-between items-center sticky top-0 z-50 shadow-sm flex-shrink-0">
+            <a href="index.html" class="text-gray-600 hover:text-green-600 transition-colors duration-300">
+                <i class="fa-solid fa-arrow-left text-xl"></i>
+            </a>
+            <h1 class="text-xl font-bold text-green-600 tracking-wide">মাই প্রোফাইল</h1>
+            <div class="w-5"></div>
+        </header>
+
+        <!-- স্ক্রোলাবল মেইন কন্টেন্ট এরিয়া -->
+        <main class="flex-1 overflow-y-auto pb-24 no-scrollbar bg-slate-50/50 p-4">
+            
+            <!-- ইউজারের মূল কার্ড -->
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-center relative overflow-hidden mb-4">
+                <div class="absolute top-0 left-0 right-0 h-16 bg-gradient-to-r from-emerald-500 to-green-600"></div>
+                
+                <!-- প্রোফাইল পিকচার এবং পিকচার পরিবর্তনের ক্যাচিং আপলোড বাটন -->
+                <div class="relative z-10 -mt-2 inline-block">
+                    <img id="user-img" class="w-20 h-20 rounded-full object-cover border-4 border-white shadow-md mx-auto bg-white" src="https://ui-avatars.com/api/?name=User" alt="User Avatar">
+                    
+                    <!-- ক্যামেরা আইকন সিলেক্টর -->
+                    <label for="image-input" class="absolute bottom-0 right-0 bg-green-600 hover:bg-green-700 text-white p-1.5 rounded-full shadow cursor-pointer border-2 border-white transition-all flex items-center justify-center w-7 h-7">
+                        <i class="fa-solid fa-camera text-xs"></i>
+                    </label>
+                    <input type="file" id="image-input" accept="image/*" class="hidden">
+                </div>
+
+                <!-- তথ্য (নাম এবং নিচে ইমেইল) -->
+                <h2 id="user-name" class="text-lg font-bold text-gray-800 mt-2">লোড হচ্ছে...</h2>
+                <p id="user-email" class="text-xs text-gray-500 font-medium mb-3">loading...</p>
+
+                <!-- ব্যাজ -->
+                <div class="inline-flex items-center gap-1.5 bg-green-50 text-green-700 text-xs px-3 py-1 rounded-full font-semibold border border-green-100">
+                    <i class="fa-solid fa-circle-check text-[10px]"></i>
+                    <span id="account-status">যাচাইকৃত ইউজার</span>
+                </div>
+            </div>
+
+            <!-- অপশন মেনু লিস্ট -->
+            <div class="space-y-2.5">
+                
+                <!-- অ্যাডমিন প্যানেল বাটন -->
+                <a id="admin-btn" href="admin.html" class="hidden flex items-center justify-between bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-3.5 rounded-2xl shadow-sm hover:shadow-md transition-all active:scale-98">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 bg-white/20 rounded-xl flex items-center justify-center">
+                            <i class="fa-solid fa-user-shield text-base"></i>
+                        </div>
+                        <span class="text-xs font-bold">অ্যাডমিন প্যানেল</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs opacity-75"></i>
+                </a>
+
+                <!-- হোম পেজ লিংকিং -->
+                <a href="index.html" class="flex items-center justify-between bg-white p-3.5 rounded-2xl shadow-sm border border-gray-100 hover:border-green-500 transition-all active:scale-98">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 bg-green-50 text-green-600 rounded-xl flex items-center justify-center">
+                            <i class="fa-solid fa-house text-sm"></i>
+                        </div>
+                        <span class="text-xs font-semibold text-gray-700">হোম পেজে যান</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-gray-400"></i>
+                </a>
+
+                <!-- অ্যাপ সম্পর্কে -->
+                <div class="bg-white p-3.5 rounded-2xl shadow-sm border border-gray-100 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center">
+                            <i class="fa-solid fa-circle-info text-sm"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-semibold text-gray-700">অ্যাপ ভার্সন</p>
+                            <p class="text-[10px] text-gray-400">v1.0.0 (স্মার্ট পীরগঞ্জ)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- লগআউট বাটন -->
+                <button id="logout-btn" class="w-full flex items-center justify-between bg-red-50 hover:bg-red-100 border border-red-100 p-3.5 rounded-2xl transition-all active:scale-98 mt-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 bg-red-500 text-white rounded-xl flex items-center justify-center shadow-sm">
+                            <i class="fa-solid fa-right-from-bracket text-sm"></i>
+                        </div>
+                        <span class="text-xs font-bold text-red-600">লগআউট করুন</span>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-red-400"></i>
+                </button>
+
+            </div>
+
+        </main>
+
+        <!-- বটম নেভিগেশন বার -->
+        <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-4 py-2 flex justify-between items-center shadow-lg z-40 max-w-[425px] mx-auto">
+            <a href="index.html" class="flex flex-col items-center text-gray-400 hover:text-green-600">
+                <i class="fa-solid fa-house text-lg"></i>
+                <span class="text-[10px] font-semibold mt-0.5">হোম</span>
+            </a>
+            <a href="index.html#service-section" class="flex flex-col items-center text-gray-400 hover:text-green-600">
+                <i class="fa-solid fa-layer-group text-lg"></i>
+                <span class="text-[10px] font-semibold mt-0.5">সেবাসমূহ</span>
+            </a>
+            <a href="news.html" class="flex flex-col items-center text-gray-400 hover:text-green-600">
+                <i class="fa-regular fa-newspaper text-lg"></i>
+                <span class="text-[10px] font-semibold mt-0.5">খবর</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center text-green-600">
+                <i class="fa-solid fa-user text-lg"></i>
+                <span class="text-[10px] font-bold mt-0.5">প্রোফাইল</span>
+            </a>
+        </nav>
+
+    </div>
+
+    <!-- JavaScript & Firebase -->
+    <script type="module" src="profile.js"></script>
+</body>
+</html>

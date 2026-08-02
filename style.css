@@ -1,0 +1,29 @@
+       body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: #f0f2f5;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .slider-container {
+            scroll-snap-type: x mandatory;
+        }
+        .slide-card {
+            scroll-snap-align: start;
+        }
+
+        /* স্মুথ অ্যাকর্ডিয়ন অ্যানিমেশন */
+        .more-options-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
+            opacity: 0;
+        }
+        .more-options-container.open {
+            max-height: 500px;
+            opacity: 1;
+        }

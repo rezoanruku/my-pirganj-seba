@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>লগইন / সাইনআপ</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Manifest File Link -->
+<link rel="manifest" href="manifest.json">
+<!-- Theme Color for Mobile Browsers -->
+<meta name="theme-color" opacity="1" content="#059669">
+
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
+        <h2 id="form-title" class="text-2xl font-bold text-center text-gray-800 mb-6">লগইন করুন</h2>
+        
+        <form id="auth-form" class="space-y-4">
+            <!-- নামের ইনপুট (রেজিস্ট্রেশনের সময় দেখাবে) -->
+            <div id="name-field" class="hidden">
+                <label class="block text-gray-700 text-sm font-semibold mb-1">পূর্ণ নাম</label>
+                <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="আপনার নাম লিখুন">
+            </div>
+
+            <div>
+                <label class="block text-gray-700 text-sm font-semibold mb-1">ইমেইল</label>
+                <input type="email" id="email" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="your@email.com">
+            </div>
+            
+            <div>
+                <label class="block text-gray-700 text-sm font-semibold mb-1">পাসওয়ার্ড</label>
+                <input type="password" id="password" required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="••••••••">
+            </div>
+
+            <button type="submit" id="submit-btn" class="w-full bg-emerald-600 text-white font-semibold py-3 rounded-lg hover:bg-emerald-700 transition">
+                লগইন করুন
+            </button>
+        </form>
+
+        <div class="mt-4 text-center">
+            <p id="toggle-text" class="text-gray-600 text-sm mb-3">
+                নতুন ব্যবহারকারী? <button type="button" id="toggle-btn" class="text-emerald-600 font-semibold underline">রেজিস্ট্রেশন করুন</button>
+            </p>
+
+            <div class="relative my-4">
+                <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-gray-300"></div></div>
+                <div class="relative flex justify-center text-sm"><span class="bg-white px-2 text-gray-500">অথবা</span></div>
+            </div>
+
+            <button id="google-btn" class="w-full bg-white border border-gray-300 text-gray-700 font-semibold py-2.5 rounded-lg hover:bg-gray-50 transition flex items-center justify-center gap-2">
+                <i class="fa-brands fa-google text-red-500 text-lg"></i>
+                গুগল দিয়ে সাইন ইন করুন
+            </button>
+        </div>
+    </div>
+
+    <!-- Firebase SDK / Logic -->
+    <script type="module" src="auth.js"></script>
+</body>
+</html>

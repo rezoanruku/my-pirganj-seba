@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>পীরগঞ্জ সেবা - স্মার্ট উপজেলা অ্যাপ</title>
+  
+  <!-- Tailwind CSS & Font Awesome -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Manifest File Link -->
+<link rel="manifest" href="manifest.json">
+<!-- Theme Color for Mobile Browsers -->
+<meta name="theme-color" opacity="1" content="#059669">
+
+</head>
+<body class="flex justify-center min-h-screen bg-[#f0f2f5]">
+
+    <!-- মেইন মোবাইল ফ্রেম -->
+    <div class="w-full max-w-[425px] bg-white shadow-2xl relative flex flex-col h-screen overflow-hidden">
+        
+        <!-- হেডার (টপ বার) -->
+        <header class="bg-white border-b border-gray-100 px-4 py-3 flex justify-between items-center sticky top-0 z-50 shadow-sm flex-shrink-0 relative">
+            
+            <!-- 📍 পীরগঞ্জ ম্যাপ বাটন -->
+            <a href="map.html" class="flex items-center gap-1.5 text-emerald-600 hover:text-emerald-700 transition-colors duration-300 bg-emerald-50 px-2.5 py-1.5 rounded-xl border border-emerald-100 active:scale-95 shadow-sm z-10">
+                <i class="fa-solid fa-map-location-dot text-base"></i>
+                <span class="text-xs font-bold">ম্যাপ</span>
+            </a>
+
+            <!-- অ্যাপ টাইটেল (Absolute Center করা হয়েছে) -->
+            <h1 class="text-2xl font-bold text-green-600 tracking-wide animate-pulse absolute left-1/2 -translate-x-1/2 select-none">আমার পীরগঞ্জ</h1>
+            
+            <!-- নোটিফিকেশন বাটন -->
+            <button class="text-gray-600 hover:text-green-600 transition-colors duration-300 z-10">
+                <div class="relative inline-block">
+                  <i class="fa-regular fa-bell text-xl"></i>
+                  <span class="absolute top-0 right-0 flex h-2.5 w-2.5">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
+                  </span>
+                </div>
+            </button>
+        </header>
+
+        <!-- স্ক্রোলাবল মেইন কন্টেন্ট এরিয়া -->
+        <main class="flex-1 overflow-y-auto pb-24 no-scrollbar bg-slate-50/50 space-y-4">
+            
+            <!-- 🔍 সার্চ বার সেকশন -->
+            <div class="px-4 pt-3">
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        id="search-input" 
+                        placeholder="সেবা খুঁজুন (যেমন: হাসপাতাল, পুলিশ...)" 
+                        class="w-full bg-white border border-gray-200 text-gray-800 text-xs rounded-xl pl-10 pr-4 py-2.5 focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 shadow-sm transition-all"
+                    >
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                </div>
+            </div>
+
+            <!-- স্লাইডাবল ব্যানার সেকশন -->
+            <div class="px-4 relative">
+                <div id="banner-slider" class="slider-container flex gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory">
+                    
+                    <!-- ১ম ব্যানার -->
+                    <div class="slide-card min-w-full relative h-44 rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-emerald-500 via-green-600 to-teal-700 flex items-center justify-between p-6 text-white group cursor-pointer">
+                        <div class="z-10 max-w-[70%]">
+                            <h2 class="text-xl font-bold mb-1 group-hover:scale-105 transition-transform duration-300">স্মার্ট পীরগঞ্জ সেবা</h2>
+                            <p class="text-xs opacity-95 leading-relaxed">আপনার উপজেলার সকল জরুরী তথ্য, সেবা এবং যোগাযোগ এখন এক ক্লিকে।</p>
+                        </div>
+                        <i class="fa-solid fa-layer-group text-8xl opacity-15 absolute right-4 bottom-2 transform group-hover:rotate-12 group-hover:scale-110 transition-all duration-500"></i>
+                    </div>
+
+                    <!-- ২য় ব্যানার -->
+                    <div class="slide-card min-w-full relative h-44 rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 flex flex-col justify-between p-5 text-white group cursor-pointer">
+                        <div class="absolute inset-0 bg-black/10 pointer-events-none"></div>
+                        <i class="fa-solid fa-shield-halved text-8xl opacity-10 absolute right-4 top-4 transform group-hover:scale-110 transition-all duration-500"></i>
+                        
+                        <div class="z-10">
+                            <div class="flex items-center gap-1.5 bg-white/20 w-fit px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider mb-2">
+                                <i class="fa-solid fa-circle-exclamation text-amber-300 animate-pulse"></i> জরুরী তথ্য নোটিশ
+                            </div>
+                            <p class="text-[12px] font-medium leading-relaxed opacity-95">
+                                সকল তথ্য শতভাগ যাচাইকৃত, তবুও ভুলের উর্ধ্বে নয়। তাই দেখে শুনে তথ্য গ্রহণ করুন।
+                            </p>
+                        </div>
+
+                        <div class="z-10 border-t border-white/20 pt-2 flex items-center justify-between">
+                            <div>
+                                <p class="text-[9px] opacity-75 uppercase tracking-wide">অ্যাপ প্রতিষ্ঠাতা</p>
+                                <p class="text-xs font-bold tracking-wide text-amber-300">MD REZOAN HOSSEN RUKU</p>
+                            </div>
+                            <div class="w-7 h-7 bg-white/10 rounded-full flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-user-gear"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="flex justify-center gap-1.5 mt-2">
+                    <span id="dot-0" class="w-2.5 h-1.5 rounded-full bg-green-600 transition-all duration-300"></span>
+                    <span id="dot-1" class="w-1.5 h-1.5 rounded-full bg-gray-300 transition-all duration-300"></span>
+                </div>
+            </div>
+                  <!-- সেকশন ১: পরিবহন ও যাতায়াত -->
+            <section id="service-section" class="px-4 service-section">
+                <div class="flex justify-between items-center mb-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bus text-blue-600"></i>
+                        <h3 class="text-sm font-bold text-gray-800">পরিবহন ও যাতায়াত</h3>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-4 gap-3">
+                    <!-- বাস -->
+                    <a href="details.html?category=bus" onclick="handleServiceClick(event, 'বাস')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-blue-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-bus"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">বাস</span>
+                    </a>
+
+                    <!-- গাড়ি ভাড়া -->
+                    <a href="details.html?category=car" onclick="handleServiceClick(event, 'গাড়ি ভাড়া')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-indigo-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-car"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">গাড়ি ভাড়া</span>
+                    </a>
+
+                    <!-- কুরিয়ার -->
+                    <a href="details.html?category=courier" onclick="handleServiceClick(event, 'কুরিয়ার')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-orange-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-truck"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">কুরিয়ার</span>
+                    </a>
+                </div>
+            </section>
+
+
+            <!-- সেকশন ২: স্বাস্থ্য ও চিকিৎসাকেন্দ্র -->
+            <section class="px-4 service-section">
+                <div class="flex justify-between items-center mb-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-heart-pulse text-red-600"></i>
+                        <h3 class="text-sm font-bold text-gray-800">স্বাস্থ্য ও চিকিৎসাকেন্দ্র</h3>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-4 gap-3">
+                    <a href="details.html?category=hospital" onclick="handleServiceClick(event, 'হাসপাতাল')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-red-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-red-50 text-red-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-hospital"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">হাসপাতাল</span>
+                    </a>
+
+                    <a href="details.html?category=doctor" onclick="handleServiceClick(event, 'ডাক্তার')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-teal-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">ডাক্তার</span>
+                    </a>
+
+                    <a href="details.html?category=ambulance" onclick="handleServiceClick(event, 'এম্বুলেন্স')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-orange-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-truck-medical"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">এম্বুলেন্স</span>
+                    </a>
+
+                    <a href="details.html?category=blood" onclick="handleServiceClick(event, 'রক্তদান')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-rose-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-rose-50 text-rose-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">রক্তদান</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- সেকশন ৩: শিক্ষা ও ক্যারিয়ার -->
+            <section class="px-4 service-section">
+                <div class="flex justify-between items-center mb-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-graduation-cap text-purple-600"></i>
+                        <h3 class="text-sm font-bold text-gray-800">শিক্ষা ও ক্যারিয়ার</h3>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-4 gap-3">
+                    <a href="details.html?category=school" onclick="handleServiceClick(event, 'শিক্ষা প্রতিষ্ঠান')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-purple-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-school"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">শিক্ষা প্রতিষ্ঠান</span>
+                    </a>
+
+                    <a href="details.html?category=tutor" onclick="handleServiceClick(event, 'টিউটর ও কোচিং')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-indigo-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-chalkboard-user"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">টিউটর ও কোচিং</span>
+                    </a>
+
+                    <a href="details.html?category=jobs" onclick="handleServiceClick(event, 'চাকরির খবর')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-blue-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-briefcase"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">চাকরির খবর</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- সেকশন ৪: সরকারি ও প্রশাসনিক তথ্য -->
+            <section class="px-4 service-section">
+                <div class="flex justify-between items-center mb-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-building-columns text-emerald-600"></i>
+                        <h3 class="text-sm font-bold text-gray-800">সরকারি ও প্রশাসনিক তথ্য</h3>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-4 gap-3">
+                    <a href="details.html?category=union" onclick="handleServiceClick(event, 'ইউনিয়ন ও পৌরসভা')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-emerald-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-landmark"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">ইউনিয়ন/পৌরসভা</span>
+                    </a>
+
+                    <a href="details.html?category=upazila" onclick="handleServiceClick(event, 'উপজেলা প্রশাসন')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-teal-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-teal-50 text-teal-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-building"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">উপজেলা প্রশাসন</span>
+                    </a>
+
+                    <a href="details.html?category=land" onclick="handleServiceClick(event, 'ভূমি ও রেজিস্ট্রি')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-amber-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-file-contract"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">ভূমি ও রেজিস্ট্রি</span>
+                    </a>
+
+                    <a href="details.html?category=digital" onclick="handleServiceClick(event, 'ডিজিটাল সেবা')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-cyan-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-cyan-50 text-cyan-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">ডিজিটাল সেবা</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- সেকশন ৫: জরুরী সেবা -->
+            <section class="px-4 service-section">
+                <div class="flex justify-between items-center mb-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-amber-600"></i>
+                        <h3 class="text-sm font-bold text-gray-800">জরুরী সেবা</h3>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-4 gap-3">
+                    <a href="details.html?category=police" onclick="handleServiceClick(event, 'পুলিশ')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-blue-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">পুলিশ</span>
+                    </a>
+
+                    <a href="details.html?category=fire" onclick="handleServiceClick(event, 'ফায়ার সার্ভিস')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-red-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-red-50 text-red-500 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-fire-extinguisher"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">ফায়ার সার্ভিস</span>
+                    </a>
+
+                    <a href="details.html?category=electricity" onclick="handleServiceClick(event, 'বিদ্যুৎ সেবা')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-amber-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">বিদ্যুৎ সেবা</span>
+                    </a>
+
+                    <a href="details.html?category=internet" onclick="handleServiceClick(event, 'ইন্টারনেট সেবা')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-indigo-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-wifi"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">ইন্টারনেট সেবা</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- সেকশন ৬: দর্শনীয় স্থান ও বিনোদন -->
+            <section class="px-4 service-section">
+                <div class="flex justify-between items-center mb-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-tree text-emerald-600"></i>
+                        <h3 class="text-sm font-bold text-gray-800">দর্শনীয় স্থান ও বিনোদন</h3>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-4 gap-3">
+                    <a href="details.html?category=place" onclick="handleServiceClick(event, 'দর্শনীয় স্থান')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-emerald-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-mountain-sun"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">দর্শনীয় স্থান</span>
+                    </a>
+
+                    <a href="details.html?category=park" onclick="handleServiceClick(event, 'পার্ক')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-green-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-green-50 text-green-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-tree"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">পার্ক</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- সেকশন ৭: কৃষি ও প্রাণীসম্পদ -->
+            <section class="px-4 service-section">
+                <div class="flex justify-between items-center mb-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-wheat-awn text-lime-600"></i>
+                        <h3 class="text-sm font-bold text-gray-800">কৃষি ও প্রাণীসম্পদ</h3>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-4 gap-3">
+                    <a href="details.html?category=agriculture" onclick="handleServiceClick(event, 'কৃষি সেবা')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-lime-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-lime-50 text-lime-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-wheat-awn"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">কৃষি সেবা</span>
+                    </a>
+
+                    <a href="details.html?category=vet" onclick="handleServiceClick(event, 'পশু চিকিৎসক')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-orange-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-orange-50 text-orange-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-paw"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">পশু চিকিৎসক</span>
+                    </a>
+
+                    <a href="details.html?category=agri_product" onclick="handleServiceClick(event, 'কৃষি-পণ্য কেনাবেচা')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-green-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-green-50 text-green-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">কৃষি-পণ্য</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- সেকশন ৮: ব্যবসায়িক ও সার্ভিস ডিরেক্টরি -->
+            <section class="px-4 service-section">
+                <div class="flex justify-between items-center mb-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-store text-sky-600"></i>
+                        <h3 class="text-sm font-bold text-gray-800">ব্যবসায়িক ও সার্ভিস ডিরেক্টরি</h3>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-4 gap-3">
+                    <a href="details.html?category=shop" onclick="handleServiceClick(event, 'বাজার ও দোকানপাট')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-sky-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-sky-50 text-sky-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-shop"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">দোকানপাট</span>
+                    </a>
+
+                    <a href="details.html?category=technician" onclick="handleServiceClick(event, 'দক্ষ কারিগর')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-amber-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">দক্ষ কারিগর</span>
+                    </a>
+
+                    <a href="details.html?category=restaurant" onclick="handleServiceClick(event, 'হোটেল ও রেস্তোরাঁ')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-rose-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-rose-50 text-rose-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-utensils"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">রেস্তোরাঁ</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- সেকশন ৯: আইনি ও সমাজসেবা -->
+            <section class="px-4 service-section">
+                <div class="flex justify-between items-center mb-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-scale-balanced text-indigo-600"></i>
+                        <h3 class="text-sm font-bold text-gray-800">আইনি ও সমাজসেবা</h3>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-4 gap-3">
+                    <a href="details.html?category=lawyer" onclick="handleServiceClick(event, 'আইনজীবী')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-indigo-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-scale-balanced"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">আইনজীবী</span>
+                    </a>
+
+                    <a href="details.html?category=kazi" onclick="handleServiceClick(event, 'কাজী অফিস')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-purple-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-handshake"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">কাজী অফিস</span>
+                    </a>
+
+                    <a href="details.html?category=volunteer" onclick="handleServiceClick(event, 'স্বেচ্ছাসেবক সংগঠন')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-emerald-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-hands-holding-child"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">স্বেচ্ছাসেবক</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- সেকশন ১০: খবর ও ইভেন্ট সংবাদ -->
+            <section class="px-4 service-section">
+                <div class="flex justify-between items-center mb-3">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-newspaper text-red-500"></i>
+                        <h3 class="text-sm font-bold text-gray-800">ইভেন্ট ও বিজ্ঞাপন</h3>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-4 gap-3">
+
+                    <a href="details.html?category=events" onclick="handleServiceClick(event, 'ইভেন্ট নোটিশ')" class="service-card flex flex-col items-center bg-white p-2.5 rounded-2xl shadow-sm border border-gray-100 hover:border-amber-500 hover:shadow-md transition-all duration-300 text-center active:scale-95">
+                        <div class="w-11 h-11 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-lg mb-1.5">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                        <span class="service-title text-[11px] font-semibold text-gray-700">ইভেন্ট নোটিশ</span>
+                    </a>
+                </div>
+            </section>
+
+        </main>
+        
+        <!-- বটম নেভিগেশন বার -->
+        <nav class="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-4 py-2.5 flex justify-between items-center shadow-lg z-40">
+            <a href="index.html" class="flex flex-col items-center text-green-600">
+                <i class="fa-solid fa-house text-lg"></i>
+                <span class="text-[10px] font-bold mt-0.5">হোম</span>
+            </a>
+            <a href="#service-section" class="flex flex-col items-center text-gray-400 hover:text-green-600 transition-colors">
+                <i class="fa-solid fa-layer-group text-lg"></i>
+                <span class="text-[10px] font-semibold mt-0.5">সেবাসমূহ</span>
+            </a>
+            <a href="news.html" class="flex flex-col items-center text-gray-400 hover:text-green-600 transition-colors">
+                <i class="fa-regular fa-newspaper text-lg"></i>
+                <span class="text-[10px] font-semibold mt-0.5">খবর</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center text-gray-400 hover:text-green-600 transition-colors">
+                <i class="fa-regular fa-user text-lg"></i>
+                <span class="text-[10px] font-semibold mt-0.5">প্রোফাইল</span>
+            </a>
+        </nav>
+    </div>
+    
+  <script src="script.js"></script>
+</body>
+</html>
