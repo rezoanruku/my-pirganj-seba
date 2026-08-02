@@ -1,9 +1,9 @@
-       body {
-            font-family: 'Hind Siliguri', sans-serif;
-            background-color: #f0f2f5;
-             padding-top: 40 px; /* স্ট্যাটাস বারের ফাঁকা জায়গা তৈরির জন্য */
+body {
+    font-family: 'Hind Siliguri', sans-serif;
+    background-color: #f0f2f5;
+    padding-top: 40px; /* স্পেসটি সরিয়ে দেওয়া হয়েছে এবং ঠিকমতো কাজ করবে */
+}
 
-        }
         .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
