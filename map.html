@@ -2,7 +2,7 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>পীরগঞ্জ ম্যাপ - আমার পীরগঞ্জ</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -10,7 +10,7 @@
   <!-- Manifest File Link -->
   <link rel="manifest" href="manifest.json">
   <!-- Theme Color for Mobile Browsers -->
-  <meta name="theme-color" content="#059669">
+  <meta name="theme-color" opacity="1" content="#059669">
 </head>
 <body class="flex justify-center min-h-screen bg-gray-100 font-['Hind_Siliguri']">
 
@@ -18,8 +18,8 @@
     <div class="w-full max-w-[425px] bg-white shadow-2xl relative flex flex-col min-h-screen overflow-hidden">
         
         <!-- হেডার -->
-<header class="bg-white border-b border-gray-100 px-4 py-3 flex items-center justify-between sticky top-0 z-50 shadow-sm pt-[max(0.75rem,env(safe-area-inset-top))]">
-   <div class="flex items-center gap-3">
+        <header class="bg-white border-b border-gray-100 px-4 py-3 flex items-center justify-between sticky top-0 z-50 shadow-sm pt-[max(0.75rem,env(safe-area-inset-top))]">
+            <div class="flex items-center gap-3">
                 <a href="index.html" class="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-emerald-100 hover:text-emerald-600 transition-all active:scale-95">
                     <i class="fa-solid fa-arrow-left"></i>
                 </a>
@@ -31,10 +31,10 @@
             </button>
         </header>
 
-        <!-- ম্যাপ এরিয়া (প্যাডিং দিয়ে বাটনের জায়গা রাখা হয়েছে) -->
+        <!-- ম্যাপ এরিয়া -->
         <main class="flex-1 relative bg-white flex items-center justify-center p-2 pb-24 min-h-[500px]">
             
-            <!-- ১. পীরগঞ্জ ম্যাপ ছবি (ডিরেক্ট লিংক সহ) -->
+            <!-- ১. পীরগঞ্জ ম্যাপ ছবি -->
             <div id="image-map-container" class="w-full h-full flex items-center justify-center">
                 <img 
                     src="https://i.postimg.cc/RF7S4QLz/1785667252492.png" 
@@ -43,20 +43,20 @@
                 >
             </div>
 
-            <!-- ২. আপনার দেওয়া পদ্ধতিতে গুগল ম্যাপস এম্বেড -->
+            <!-- ২. পীরগঞ্জ উপজেলার গুগল ম্যাপস এম্বেড -->
             <div id="google-map-container" class="w-full h-[70vh] hidden">
                 <iframe
-  src="https://www.google.com/maps?q=Pirganj+Upazila&output=embed"
-  width="600"
-  height="450"
-  style="border:0;"
-  allowfullscreen=""
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade">
-</iframe>
+                    src="https://www.google.com/maps?q=Pirganj+Upazila,+Rangpur,+Bangladesh&output=embed"
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
 
-            <!-- লাইভ জিপিএস বাটন বার -->
+            <!-- লাইভ ম্যাপ বাটন বার -->
             <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl shadow-xl border border-gray-100 flex justify-between items-center z-20">
                 <div class="flex items-center gap-3">
                     <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-lg">
@@ -91,7 +91,7 @@
             imageContainer.classList.add('hidden');
             googleContainer.classList.remove('hidden');
             resetBtn.classList.remove('hidden');
-            mapTitle.innerText = "পীরগঞ্জ লাইভ গুগল ম্যাপ";
+            mapTitle.innerText = "পীরগঞ্জ উপজেলা ম্যাপ (গুগল)";
         }
 
         function showStaticImage() {
